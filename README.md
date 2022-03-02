@@ -13,11 +13,11 @@ To stop small differences in size between frames from accumulating, we implement
 https://user-images.githubusercontent.com/49324844/156448097-45c8918d-ed45-4679-bd36-600b84f38f19.mp4
 
 ```
-orange: bbox predicted by model
-red: bbox added by tracker
-green: ground truth bbox
+video legend
 
-tracks and predictions include (IoU with ground truth, confidence) information
+green     ground truth bbox
+orange    bbox predicted by model (includes IoU, confidence)
+red       bbox added by tracker (includes IoU, confidence)
 ```
 
 You can see in the video the main improvements of our custom tracker (to the right) vs the Norfair tracker (to the left):

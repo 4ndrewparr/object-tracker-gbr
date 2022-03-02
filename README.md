@@ -1,1 +1,25 @@
-# image-tracker-gbr
+# object-tracker-gbr
+
+Object tracker based on template-matching developed for the [Great Barrier Reef Kaggle competition](https://www.kaggle.com/c/tensorflow-great-barrier-reef/).
+
+The baseline to beat was the [Norfair tracker](https://github.com/tryolabs/norfair), publicly shared during the competition.
+
+The Norfair tracker works well with fixed cameras and moving tracked objects (i.e. cars or people captured by a street camera), but in our problem we encounter the opposite situation: we have fixed objects to track (the starfishes) and a moving camera/point-of-view (the diver or drone carrying the camera moves along the reefs).
+
+The fact that the objects to tracks are immobile is what makes possible to use template-matching as the tracking method, since even with a moving point-of-view, objects in consecutive frames are almost identical.
+
+To stop small differences in size between frames from accumulating, we implement as well a *dynamic* mode, by which the tracker will try to match the template at different scales, chosing the best match of all. This allows for bounding boxes to expand/shrink appropiately as the object gets closer/further, which is critical for performance, since as most of object detection tasks, the competition's metric is based on IoU.
+
+https://user-images.githubusercontent.com/49324844/156448097-45c8918d-ed45-4679-bd36-600b84f38f19.mp4
+
+```
+orange: bbox predicted by model
+red: bbox added by tracker
+green: ground truth bbox
+
+tracks and predictions include IoU with ground truth, confidence information
+```
+
+You can see in the video the main improvements of our custom tracker (to the right) vs the Norfair tracker (to the left):
+- tracks much better the movements, specially changes of direction/speed (Norfair's tracker doesn't actually *see* anything, it just estimates the position from past movements)
+- is able to adjust bounding box size

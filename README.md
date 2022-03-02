@@ -17,7 +17,7 @@ orange: bbox predicted by model
 red: bbox added by tracker
 green: ground truth bbox
 
-tracks and predictions include IoU with ground truth, confidence information
+tracks and predictions include (IoU with ground truth, confidence) information
 ```
 
 You can see in the video the main improvements of our custom tracker (to the right) vs the Norfair tracker (to the left):

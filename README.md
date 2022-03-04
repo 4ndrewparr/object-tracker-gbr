@@ -40,8 +40,8 @@ for img in imgs:
   bboxes, scores = fn_inference(img)
   
   # update tracker with frame predictions
-  tracker.update(bboxes, scores, frame_id, img_np[:,:,::-1])  # we want the BGR img
-            
+  tracker.update(bboxes, scores, frame_id, img)
+  
   # add tracked undetected objects
   bboxes_tr, scores_tr = tracker.find()
   

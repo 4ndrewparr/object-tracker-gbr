@@ -32,6 +32,8 @@ You can see in the video the main improvements of our custom tracker (to the rig
 
 **How to integrate the tracker in your ML detector pipeline:**
 ```python
+from tracker_custom2 import Tracker
+
 # initialize tracker
 tracker = Tracker(**kwargs)
 
